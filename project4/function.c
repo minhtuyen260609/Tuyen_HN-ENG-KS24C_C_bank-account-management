@@ -154,24 +154,22 @@ void printUser(User user[], int n) {
     printf("Go Back (any key) or Exit (0) "); 
 }
 void saveUsersToFile(User user[], int n) {
-    FILE *ptr=fopen("bankdata.bin", "ab+");
+    FILE *ptr=fopen("bankdata.bin", "wb+");
     if(ptr==NULL) {
         printf("Cannot open file.\n");
         return;
     }
     fwrite(user, sizeof(User), n, ptr);
     fclose(ptr);
-    printf("Saved information successfully.\n");
 }
 void loadUsersFromFile(User users[], int *n) {
-    FILE *ptr=fopen("bankdata.bin", "rb+");
+    FILE *ptr=fopen("bankdata.bin", "rb");
     if(ptr==NULL){
         printf("Cannot open file.\n");
         return;
     }
     *n=fread(users, sizeof(User), 50, ptr);
     fclose(ptr);
-    printf("Get data successfully. Number of users: %d\n", *n);
 }
 void searchUserByName(User user[], int n) {
     char searchQuery[50];
@@ -228,11 +226,10 @@ void searchUserById(User user[], int n) {
 void openAndLock(User user[], int n){
 	char searchQuery[50];
 	int i, found=0;
-	printf("Enter the id to search: ");
+	printf("Enter the user you want to lock or unlock: ");
     scanf("%s", &searchQuery);
-    getchar();
     for(i=0;i<n;i++){
-    	if(strcmp(user[i].id, searchQuery)!=NULL){
+    	if(strcmp(user[i].id, searchQuery)==0){
     		if(strcmp(user[i].status, "Open")==0){
     			strcpy(user[i].status, "Lock");
 			}else if(strcmp(user[i].status, "Lock")==0){

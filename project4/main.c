@@ -52,6 +52,7 @@ int main(int argc, char *argv[]){
 					system("cls");
 					loadUsersFromFile(users, &n);
 					searchUserById(users, n);
+					getchar(); 
 					break; 
 				case 6:
 					system("cls");
