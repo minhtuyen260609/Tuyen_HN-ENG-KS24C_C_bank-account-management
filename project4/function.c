@@ -25,8 +25,9 @@ void printMenu(){
 	printf("[0] Exit the Program.\n");
 	printf("========================\n");
 }
-void addUser(User user[], int *n) { 
+void addUser(User user[], int *n){ 
     int i, j, isDuplicate;
+    printf("***ADD A NEW USER***");
     do{
     	isDuplicate=0;
     	printf("Enter the ID (6 characters): ");
@@ -134,7 +135,7 @@ void addUser(User user[], int *n) {
     
     printf("User added successfully!\n\n");
     (*n)++;
-    printf("Go Back (any key) or Exit (0) "); 
+    printf("Go Back (any key) "); 
 }   
 void printUser(User user[], int n) {
 	int i;
@@ -151,7 +152,7 @@ void printUser(User user[], int n) {
                
         printf("|------------|-------------------------------------|--------------------------------|---------------|--------|\n");
     }
-    printf("Go Back (any key) or Exit (0) "); 
+    printf("Go Back (any key) "); 
 }
 void saveUsersToFile(User user[], int n) {
     FILE *ptr=fopen("bankdata.bin", "wb+");
@@ -232,15 +233,20 @@ void openAndLock(User user[], int n){
     	if(strcmp(user[i].id, searchQuery)==0){
     		if(strcmp(user[i].status, "Open")==0){
     			strcpy(user[i].status, "Lock");
+    			printf("User lock successful\n"); 
 			}else if(strcmp(user[i].status, "Lock")==0){
 				strcpy(user[i].status, "Open");
+				printf("User unlock successful\n"); 
 			}
 			found=1;
 		}
 	}
-	if(!found){
+	if(!found){ 
 		printf("No user found containing the id.");
 	}
+	int temp;
+	printf("Go back (any key) ");
+	scanf("%d", &temp);
 }
 void sortUserByName(User user[], int n){
 //	getchar();

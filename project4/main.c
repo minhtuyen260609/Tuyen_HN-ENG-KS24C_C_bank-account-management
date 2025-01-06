@@ -26,6 +26,7 @@ int main(int argc, char *argv[]){
 	    	switch(select){
 	    		case 1:
 	    			system("cls");
+	    			loadUsersFromFile(users, &n);
 					addUser(users, &n); 
 				    saveUsersToFile(users, n);
 				    getchar();
