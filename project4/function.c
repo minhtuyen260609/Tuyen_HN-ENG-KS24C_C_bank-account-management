@@ -27,7 +27,7 @@ void printMenu(){
 }
 void addUser(User user[], int *n){ 
     int i, j, isDuplicate;
-    printf("***ADD A NEW USER***");
+    printf("\t***ADD A NEW USER***\n");
     do{
     	isDuplicate=0;
     	printf("Enter the ID (6 characters): ");
@@ -154,16 +154,16 @@ void printUser(User user[], int n) {
     }
     printf("Go Back (any key) "); 
 }
-void saveUsersToFile(User user[], int n) {
+void saveUsersToFile(User user[], int n){
     FILE *ptr=fopen("bankdata.bin", "wb+");
-    if(ptr==NULL) {
+    if(ptr==NULL){
         printf("Cannot open file.\n");
         return;
     }
     fwrite(user, sizeof(User), n, ptr);
     fclose(ptr);
 }
-void loadUsersFromFile(User users[], int *n) {
+void loadUsersFromFile(User users[], int *n){
     FILE *ptr=fopen("bankdata.bin", "rb");
     if(ptr==NULL){
         printf("Cannot open file.\n");
@@ -172,7 +172,7 @@ void loadUsersFromFile(User users[], int *n) {
     *n=fread(users, sizeof(User), 50, ptr);
     fclose(ptr);
 }
-void searchUserByName(User user[], int n) {
+void searchUserByName(User user[], int n){
     char searchQuery[50];
     int i, found=0;
     printf("Enter the name to search: ");
@@ -198,7 +198,7 @@ void searchUserByName(User user[], int n) {
     }
     printf("Go Back (any key) or Exit (0) "); 
 }
-void searchUserById(User user[], int n) {
+void searchUserById(User user[], int n){
     char searchQuery[50];
     int i, found=0;
     printf("Enter the id to search: ");
@@ -227,6 +227,7 @@ void searchUserById(User user[], int n) {
 void openAndLock(User user[], int n){
 	char searchQuery[50];
 	int i, found=0;
+	printf("\t***LOCK (UNLOCK) AN USER***\n");
 	printf("Enter the user you want to lock or unlock: ");
     scanf("%s", &searchQuery);
     for(i=0;i<n;i++){
@@ -242,7 +243,7 @@ void openAndLock(User user[], int n){
 		}
 	}
 	if(!found){ 
-		printf("No user found containing the id.");
+		printf("No user found containing the id.\n");
 	}
 	int temp;
 	printf("Go back (any key) ");

@@ -8,13 +8,7 @@ int main(int argc, char *argv[]){
     int n = 0;
     int choice, select;
 	do{
-		printf("\n***Bank Management System Using C***");
-		printf("\n \t CHOOSE YOUR ROLE\n");
-		printf("========================\n");
-		printf("[1] Admin.\n");
-		printf("[2] User.\n");
-		printf("[0] Exit the Program\n");
-		printf("========================\n");
+		printStartscreen();
 	    printf("Enter The Choice: ");
 	    scanf("%d", &choice);
 	    if(choice==1){
@@ -71,6 +65,7 @@ int main(int argc, char *argv[]){
 		}else if(choice==2){
 			
 		}else if(choice==0){
+			system("cls");
 			printf("==========Thank You==========\n"); 
 			printf("========See You Soon=========="); 
 		}else{
